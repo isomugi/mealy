@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,10 +77,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'birth_pro', #　作成したデータベース名
-        'USER': 'root', # ログインユーザー名
-        # 'HOST': '',
-        # 'PORT': '',
+        'NAME': 'birthpro', #　作成したデータベース名
+        'USER': 'birth', # ログインユーザー名
+		'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
