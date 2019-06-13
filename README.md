@@ -20,6 +20,8 @@ mysql> create user birth@localhost identified with mysql_native_password by ''
 mysql> grant all on birth.* to birth@localhost
 mysql> quit
 python manage.py migrate
+hoge
+
 ```
 
 ## How to start
