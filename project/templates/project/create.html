@@ -1,0 +1,22 @@
+<h1>新規投稿作成</h1>
+
+{% if form and form.errors %}<div><strong>{{ form.errors }}</strong></div>{% endif %}
+
+<form action="{% url 'project:post' %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="">
+		<input type="text" name="title" placeholder="タイトル">
+	</div>
+	<div class="">
+		<textarea name="text" rows="8" cols="80" placeholder="テキスト"></textarea>
+	</div>
+	<div class="">
+		<label for="photo">
+			写真をアップロードしてください。
+		</label>
+		<input type="file" name="photo" id="photo">
+	</div>
+	<div class="">
+		<button type="submit" name="button">送信</button>
+	</div>
+</form>

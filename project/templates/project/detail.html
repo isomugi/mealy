@@ -1,0 +1,8 @@
+<h1>{{ post.title }}</h1>
+<div class="">
+	{{ post.text }}
+</div>
+<img src="{{ post.photo.url }}" alt="[Image]">
+
+<br><br>
+<a href="{% url 'project:index' %}">戻る</a>
