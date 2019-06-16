@@ -2,10 +2,14 @@
 {% block contents %}
 
 <h1>{{ post.title }}</h1>
+<div class="">tatsuki
+
+</div>
 <div class="">
 	{{ post.text }}
 </div>
-<img src="{{ post.photo.url }}" alt="[Image]">
+<img src="{{ post.photo.url }}" alt="[Image]" class="post-image">
+
 
 <br><br>
 <a href="{% url 'project:index' %}">戻る</a>
