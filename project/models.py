@@ -6,7 +6,7 @@ from django.core.validators import FileExtensionValidator
 
 class Post(models.Model):
 	title = models.CharField(max_length = 200)
-	text = models.TextField()
+	text = models.TextField(null=True)
 	photo = models.FileField(
 		upload_to='uploads/%Y/%m/%d/',
 		validators=[FileExtensionValidator(['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'])]
