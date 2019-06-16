@@ -1,14 +1,17 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'project/style.css' %}">
+{% extends 'project/base.html' %}
+{% block contents %}
 
 {% if latest_post_list %}
-    <ul>
+<div class="pt-5">
     {% for post in latest_post_list %}
-        <li><a href="{% url 'project:detail' post.id %}">{{ post.text }}</a></li>
+		{% include 'project/post.html' %}
     {% endfor %}
-    </ul>
+</div>
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
 
-<a href="{% url 'project:create' %}">新規投稿</a>
+<div class="mt-4">
+	<a href="{% url 'project:create' %}" class="red mt-4">新規投稿</a>
+</div>
+{% endblock contents %}

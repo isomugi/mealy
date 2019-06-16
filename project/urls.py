@@ -7,7 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
 	path('<int:post_id>/', views.detail, name='detail'),
 	path('create/', views.create, name='create'),
-	path('post/', views.post, name='post')
+	path('post/', views.post, name='post'),
+	path('mypage/', views.mypage, name='mypage'),
 ]
 
 from django.conf import settings

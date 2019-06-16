@@ -25,3 +25,6 @@ def post(request):
 	else:
 		form = PostModel()
 	return render(request, 'project/create.html', { 'form': form })
+
+def mypage(request):
+	return render(request, 'project/mypage.html')
