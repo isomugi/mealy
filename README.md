@@ -32,4 +32,5 @@ python manage.py runserver
 Open http://localhost:8000 to see the app working!
 
 ## used libraries
-CSS, JS: https://getbootstrap.com/\n
+- CSS, JS: https://getbootstrap.com/, https://api.jquery.com/
+- Fonts: https://fontawesome.com/icons/
