@@ -30,4 +30,6 @@ python manage.py runserver
 ```
 
 Open http://localhost:8000 to see the app working!
-http://localhost:8000/polls for the test app.
+
+## used libraries
+CSS, JS: https://getbootstrap.com/\n

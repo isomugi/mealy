@@ -1,0 +1,16 @@
+{% load static %}
+<div class="background-white sticky navi-top center-padding">
+	<div class="flex justify-space-between align-center py-3">
+		<div>
+			<a href="{% url 'project:index' %}">
+				<img src="{% static 'project/images/present.png' %}" alt="[Logo]" height="30">
+			</a>
+			<span class="px-3">HB</span>
+		</div>
+		<div class="">
+			<a href="{% url 'project:mypage' %}">
+				<i class="far fa-user fa-2x"></i>
+			</a>
+		</div>
+	</div>
+</div>

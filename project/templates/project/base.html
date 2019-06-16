@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %}" type="text/css">
+		<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'project/css/main.css' %}">
+		<script src="https://kit.fontawesome.com/d5c75f4bc7.js"></script>
+		{% block styles %}{% endblock %}
+		<link rel="icon" href="{% static 'project/images/present.png' %}">
+		<title>HB</title>
+	</head>
+	<body class="background-grey">
+		<header>
+			{% include 'project/navi.html' %}
+		</header>
+		<div class="mx-4 center-padding">
+			{% block contents %}{% endblock %}
+		</div>
+		<footer>
+			{% include 'project/footer.html' %}
+		</footer>
+		<script type="text/javascript" src="{% static 'project/js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'project/js/bootstrap.min.js' %}"></script>
+		{% block scripts %}{% endblock %}
+	</body>
+</html>
