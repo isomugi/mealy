@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
@@ -9,6 +9,8 @@ urlpatterns = [
 	path('create/', views.create, name='create'),
 	path('post/', views.post, name='post'),
 	path('mypage/', views.mypage, name='mypage'),
+	path('register/', views.register, name='register'),
+	path('login/', views.login, name='login'),
 ]
 
 from django.conf import settings

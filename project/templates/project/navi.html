@@ -8,9 +8,18 @@
 			<span class="px-3">HB</span>
 		</div>
 		<div class="">
+			{% if user.is_authenticated %}
 			<a href="{% url 'project:mypage' %}">
 				<i class="far fa-user fa-2x"></i>
 			</a>
+			{% else %}
+			<a href="{% url 'project:login' %}">
+				ログイン
+			</a>
+			<a href="{% url 'project:register' %}" class="ml-4">
+				登録
+			</a>
+			{% endif %}
 		</div>
 	</div>
 </div>
