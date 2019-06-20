@@ -46,14 +46,16 @@ def register(request, *arg, **kwargs):
 		form = UserCreateForm()
 	return render(request, 'registration/register.html', { 'form': form })
 
-def login(request, *arg, **kwargs):
+def login(request):
 	if request.method == 'POST':
-		form = LoginForm(data=request.POST)
-		if form.is_valid():
-			username = form.cleaned_data.get('username')
-			user = User.objects.get(username=username)
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
 			login(request, user)
 			return redirect('project:index')
+		else:
+			form = LoginForm(request)
 	else:
 		form = LoginForm()
 	return render(request, 'registration/login.html', { 'form': form })
