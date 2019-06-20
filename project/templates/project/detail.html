@@ -5,33 +5,30 @@
 
 
 <div class="shadow p-3 mb-5 bg-white rounded mn" id="main">
-	<div align="left">
+	<div class="left">
 		<h1 >{{ post.title }}</h1>
-	  <div class="" >投稿者</div>
+		<div class="" >投稿者</div>
 	</div>
 
-  <div align="center">
+	<div class="flex">
+		<div class="center">
+			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+		</div>
 
-
-	 <img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
-  </div>
-
- <div align="right">
-
-	 <div class="" >
-		{{ post.text }}
-　 </div>
-
- </diV>
+		<div class="right">
+			<div class="" >
+				{{ post.text }}
+			</div>
+		</div>
+	</div>
 </div>
+
 <button type="button" name="button">いいね</button>
 
 <div class="shadow p-3 mb-5 bg-white rounded cm">
-
-　<div type="scroll" class="comment">
-　
-　</div>
-
+	<div type="scroll" class="comment">
+		<!--  -->
+	</div>
 </div>
 
 <br><br>
