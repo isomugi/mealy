@@ -1,6 +1,12 @@
 {% extends 'project/base.html' %}
 {% block contents %}
 <div class="">
-	マイページ
+	<div class="fa-2x font-bold">
+		{{ user.username }} <button type="button" class="btn btn-info ml-3">プロフィールを編集</button>
+	</div>
+	<form class="mt-4" action="{% url 'project:logout' %}" method="post">
+		{% csrf_token %}
+		<button type="submit" name="button" class="btn btn-outline-secondary">ログアウト</button>
+	</form>
 </div>
 {% endblock contents %}

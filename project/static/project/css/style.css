@@ -1,6 +1,5 @@
 /* font-family */
 body {
-	position: relative;
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 	color: #0a1227;
 }
@@ -8,9 +7,6 @@ body {
 /* backgrounds */
 .background-grey {
 	background-color: #fafafa;
-}
-.background-white {
-	background-color: #fff;
 }
 
 /* fonts */
@@ -37,6 +33,15 @@ body {
 }
 .lg-height {
 	line-height: 2;
+}
+.fa-0_9x {
+	font-size: 0.9em;
+}
+.fa-0_8x {
+	font-size: 0.8em;
+}
+.fa-0_7x {
+	font-size: 0.7em;
 }
 
 /* paddings */
