@@ -1,5 +1,8 @@
 <a href="{% url 'project:detail' post.id %}">
-	<div class="background-white py-4">
+	<div class="bg-white py-4">
 		{{ post.text }}
+		<div class="fa-0_8x">
+			{{ post.user.username }}
+		</div>
 	</div>
 </a>
