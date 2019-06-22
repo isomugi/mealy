@@ -1,10 +1,11 @@
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login as login, authenticate, logout
 
 from .models import Post, PostModel
-from .forms import UserCreateForm, LoginForm
+from .forms import UserCreateForm, UserUpdateForm, LoginForm
 
 def index(request):
 	latest_post_list = Post.objects.order_by('-pub_date')[:5]
@@ -39,6 +40,14 @@ def mypage(request):
 	if not request.user.is_authenticated:
 		return redirect('project:login')
 	return render(request, 'project/mypage.html')
+
+def edit(request):
+	if request.method == 'POST':
+		form = UserUpdateForm(data=request.POST, instance=request.user)
+		if form.is_valid():
+			user = form.save()
+			return JsonResponse({ 'user': user.username })
+	return HttpResponse(form)
 
 def register(request, *arg, **kwargs):
 	if request.user.is_authenticated:
