@@ -23,7 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+_gs@m@d3eji%7)ys@ok2xmiz0y4_y^%mqmd4q4tl&*x!h^!u)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('GAE_INSTANCE'):
+	DEBUG = False
+else:
+	DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -80,10 +83,14 @@ DATABASES = {
         'NAME': 'birthpro', #　作成したデータベース名
         'USER': 'birth', # ログインユーザー名
 		'PASSWORD': '',
-        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+DATABASES['default']['HOST'] = '/cloudsql/mealy-245003:asia-east1:mealy-instance'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
 
 
 # Password validation
@@ -122,6 +129,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+if os.getenv('GAE_INSTANCE'):
+    STATIC_URL = 'https://storage.googleapis.com/mealy/static/'
+else:
+	STATIC_URL = '/static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

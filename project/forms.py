@@ -16,9 +16,13 @@ class UserCreateForm(UserCreationForm):
        fields = ("username", "email", "password1", "password2",)
 
 class UserUpdateForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		self.user = kwargs.get('instance', None)
+	email = forms.EmailField(required=False)
+
 	class Meta:
 		model = User
-		fields = ('username',)
+		fields = ('username', 'email')
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
