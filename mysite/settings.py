@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	# 'storages',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +135,13 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if os.getenv('GAE_INSTANCE'):
     MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
+	# from google.oauth2 import service_account
+	# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+	#     '/mealy-ca65d65bdd56.json'
+	# )
+	# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	# GS_BUCKET_NAME = 'mealy/media'
+	# GS_PROJECT_ID = 'mealy-245003'
 else:
 	MEDIA_URL = '/media/'
