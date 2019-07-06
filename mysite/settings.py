@@ -28,7 +28,7 @@ if os.getenv('GAE_INSTANCE'):
 else:
 	DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,7 +83,8 @@ DATABASES = {
         'NAME': 'birthpro', #　作成したデータベース名
         'USER': 'birth', # ログインユーザー名
 		'PASSWORD': '',
-        'PORT': '3306',
+		# 'PORT': '5432', # google cloud sql 接続時
+		'PORT': '3306', # 通常時
     }
 }
 DATABASES['default']['HOST'] = '/cloudsql/mealy-245003:asia-east1:mealy-instance'
@@ -128,11 +129,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-if os.getenv('GAE_INSTANCE'):
-    STATIC_URL = 'https://storage.googleapis.com/mealy/static/'
-else:
-	STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+if os.getenv('GAE_INSTANCE'):
+    MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
+else:
+	MEDIA_URL = '/media/'
