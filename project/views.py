@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login as login, authenticate, logout
 
-from .models import Post, PostModel
+from .models import Post, PostModel, Like
 from .forms import UserCreateForm, UserUpdateForm, LoginForm
 
 def index(request):
@@ -35,6 +35,29 @@ def post(request):
 	else:
 		form = PostModel()
 	return render(request, 'project/create.html', { 'form': form })
+
+def like(request, post_id):
+	if not request.user.is_authenticated:
+		return redirect('project:login')
+
+	post = Post.objects.get(id=post_id)
+	is_like = Like.objects.filter(user=request.user).filter(post=post).count()
+    # unlike
+	if is_like > 0:
+		liking = Like.objects.get(post__id=post_id, user=request.user)
+		liking.delete()
+		post.like_num -= 1
+		post.save()
+		return redirect('project:detail', post_id = post.id)
+    # like
+	post.like_num += 1
+	post.save()
+	like = Like()
+	like.user = request.user
+	like.post = post
+	like.save()
+	return redirect('project:detail', post_id = post.id)
+
 
 def mypage(request):
 	if not request.user.is_authenticated:

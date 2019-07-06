@@ -1,17 +1,18 @@
 {% extends 'project/base.html' %}
 {% block contents %}
 
-<a href="{% url 'project:index' %}"><button type="button" class="btn btn-outline-success">戻る</button></a>
+<a href="{% url 'project:index' %}">
+	<button type="button" class="btn btn-outline-success">
+		戻る
+	</button>
+</a>
 
 
 <div class="shadow p-3 mb-5 bg-white rounded mn">
 	<div class="left">
 		<h1 >{{ post.title }}</h1>
-		<div class="" >投稿者</div>
+		<div class="" >{{ user.username }}</div>
 	</div>
- <div class="">
-
- </div>
 	<div class="flex">
 		<div class="center">
 			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
@@ -21,16 +22,19 @@
 			<div class="" >
 				{{ post.text }}
 			</div>
+			<div type="scroll" class="comment">
+				<!--  -->
+			</div>
 		</div>
 	</div>
-</div>
+  <a href="{% url 'project:like' post.id %}">
+   <button class="reaction_button" type="button" name="button">
+		 いいね
+	 </button>
+	</a>
+<div class="">{{ post.like_num }}
 
-<button type="button" name="button">いいね</button>
-<i class="far fa-grin-hearts"></i>
-<div class="shadow p-3 mb-5 bg-white rounded cm">
-	<div type="scroll" class="comment">
-		<!--  -->
-	</div>
+</div>
 </div>
 
 <br><br>

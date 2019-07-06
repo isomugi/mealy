@@ -12,25 +12,29 @@ footer {
 	font-size: 12px;
 }
 
+h1 {
+	width: 400px !important;
+}
+
 .post-image {
-	width : 360px;
-	height: 360px;
+	width : 400px;
+	height: 400px;
 	object-fit: contain;
 }
 
-.shadow.cm{
-	height: 200px !important;
-
+.reaction_button {
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px
 }
-
 .shadow.mn {
 	box-shadow: 0 .3rem 1rem
 	   rgba(0, 0, 0, 0.5)!important;
 }
 
-.shadow.cm {
-	box-shadow: 0 .3rem 1rem
-	   rgba(0, 0, 0, 0.5)!important;
+.mb-2, .my-2 {
+	border: double 5px blue !important;
 }
 
 .mb-5,.mn {

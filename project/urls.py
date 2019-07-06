@@ -13,6 +13,7 @@ urlpatterns = [
 	path('register/', views.register, name='register'),
 	path('login/', views.login_view, name='login'),
 	path('logout/', views.logout_view, name='logout'),
+    path('like/<int:post_id>/', views.like, name='like'),
 ]
 
 from django.conf import settings
