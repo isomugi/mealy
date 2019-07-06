@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+_gs@m@d3eji%7)ys@ok2xmiz0y4_y^%mqmd4q4tl&*x!h^!u)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('GAE_INSTANCE'):
+	DEBUG = False
+else:
+	DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	# 'storages',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +84,15 @@ DATABASES = {
         'NAME': 'birthpro', #　作成したデータベース名
         'USER': 'birth', # ログインユーザー名
 		'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+		# 'PORT': '5432', # google cloud sql 接続時
+		'PORT': '3306', # 通常時
     }
 }
+DATABASES['default']['HOST'] = '/cloudsql/mealy-245003:asia-east1:mealy-instance'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
 
 
 # Password validation
@@ -121,7 +130,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+if os.getenv('GAE_INSTANCE'):
+    MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
+	# from google.oauth2 import service_account
+	# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+	#     '/mealy-ca65d65bdd56.json'
+	# )
+	# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	# GS_BUCKET_NAME = 'mealy/media'
+	# GS_PROJECT_ID = 'mealy-245003'
+else:
+	MEDIA_URL = '/media/'
