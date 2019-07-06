@@ -4,12 +4,14 @@
 <a href="{% url 'project:index' %}"><button type="button" class="btn btn-outline-success">戻る</button></a>
 
 
-<div class="shadow p-3 mb-5 bg-white rounded mn" id="main">
+<div class="shadow p-3 mb-5 bg-white rounded mn">
 	<div class="left">
 		<h1 >{{ post.title }}</h1>
 		<div class="" >投稿者</div>
 	</div>
+ <div class="">
 
+ </div>
 	<div class="flex">
 		<div class="center">
 			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
@@ -24,7 +26,7 @@
 </div>
 
 <button type="button" name="button">いいね</button>
-
+<i class="far fa-grin-hearts"></i>
 <div class="shadow p-3 mb-5 bg-white rounded cm">
 	<div type="scroll" class="comment">
 		<!--  -->
