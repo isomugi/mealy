@@ -3,7 +3,8 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+		<meta name="mobile-web-app-capable" content="yes">
 		<link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %}" type="text/css">
 		<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'project/css/main.css' %}">
@@ -16,7 +17,7 @@
 		<header>
 			{% include 'project/navi.html' %}
 		</header>
-		<div class="mx-4 center-padding">
+		<div class="center-padding">
 			{% block contents %}{% endblock %}
 		</div>
 		<footer>

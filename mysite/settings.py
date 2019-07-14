@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -134,12 +135,9 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if os.getenv('GAE_INSTANCE'):
-    MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
-	# from google.oauth2 import service_account
-	# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-	#     '/mealy-ca65d65bdd56.json'
-	# )
-	# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
+	# GS_CREDENTIALS = service_account.Credentials.from_service_account_file('/mealy-ca65d65bdd56.json')←Nginxの502エラー
+	# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'←resource not foundになる
 	# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 	# GS_BUCKET_NAME = 'mealy/media'
 	# GS_PROJECT_ID = 'mealy-245003'
