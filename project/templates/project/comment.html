@@ -1,20 +1,21 @@
 {% block styles %}
 <style media="screen">
-  #id_text {
+  .comment-input {
     height: 100px;
+    width: 100%;
   }
 </style>
 {% endblock styles %}
 
 <div>
   <!-- <h3>コメント</h3> -->
-  <div class="">
+  <div class="fa-1_5x">
     コメント
   </div>
   <form method="post" action="{% url 'project:comment' post.id %}">
     {% csrf_token %}
     <!-- {{ form.as_p }} -->
-    <textarea name="text" rows="8" cols="80"></textarea>
+    <textarea name="text" class="comment-input"></textarea>
     <input type="submit">
   </form>
   <hr>
