@@ -1,7 +1,12 @@
 /* font-family */
 body {
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+	font-family: HiraginoSans, -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 	color: #0a1227;
+}
+@media(max-width: 980px) {
+	body {
+		font-size: 10px;
+	}
 }
 
 /* backgrounds */
@@ -19,6 +24,9 @@ body {
 .italic {
 	font-style: italic;
 }
+.bold {
+	font-weight: bold;
+}
 .normal-height {
 	line-height: 1;
 }
@@ -34,20 +42,45 @@ body {
 .lg-height {
 	line-height: 2;
 }
-.fa-0_9x {
-	font-size: 0.9em;
+.fa-0_7x {
+	font-size: 0.7em;
 }
 .fa-0_8x {
 	font-size: 0.8em;
 }
-.fa-0_7x {
-	font-size: 0.7em;
+.fa-0_9x {
+	font-size: 0.9em;
 }
+.fa-1_4x {
+	font-size: 1.4em;
+}
+.fa-1_5x {
+	font-size: 1.5em;
+}
+.sp-lg-space {
+	letter-spacing: 1.2px;
+}
+.sp-md-space {
+	letter-spacing: 0.8px;
+}
+.sp-sm-space {
+	letter-spacing: 0.5px;
+}
+.sp-xs-space {
+	letter-spacing: 0.2px;
+}
+@media(min-width: 981px) {
+	.pc-sm-space {
+
+	}
+}
+
+
 
 /* paddings */
 .center-padding {
-	padding-left: calc(50vw - 540px);
-	padding-right: calc(50vw - 540px);
+	padding-left: calc(50vw - 552px);
+	padding-right: calc(50vw - 552px);
 }
 @media(max-width: 1280px) {
 	.center-padding {
@@ -98,6 +131,9 @@ body {
 a, a:hover, a:focus {
 	color: #0a1227;
 	text-decoration: initial;
+}
+button {
+	cursor: pointer;
 }
 .pointer {
 	cursor: pointer;
