@@ -9,32 +9,37 @@
 
 
 <div class="shadow p-3 mb-5 bg-white rounded mn">
-	<div class="left">
-		<h1 >{{ post.title }}</h1>
-		<div class="" >{{ user.username }}</div>
-	</div>
+
 	<div class="flex">
+
 		<div class="center">
-			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+			<h1 >{{ post.title }}</h1>
+			<div class="" >{{ user.username }}</div>
+			<div class="">
+				<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+			</div>
+			<a href="{% url 'project:like' post.id %}">
+			 <button class="reaction_button" type="button" name="button">
+				 いいね
+			 </button>
+			</a>
+			<span>
+				{{ post.like_num }}
+			</span>
 		</div>
 
 		<div class="right">
 			<div class="" >
 				{{ post.text }}
 			</div>
-			<div type="scroll" class="comment">
-				<!--  -->
-			</div>
+			{% include 'project/comment.html' %}
 		</div>
-	</div>
-  <a href="{% url 'project:like' post.id %}">
-   <button class="reaction_button" type="button" name="button">
-		 いいね
-	 </button>
-	</a>
-<div class="">{{ post.like_num }}
 
-</div>
+	</div>
+
+
+
+
 </div>
 
 <br><br>

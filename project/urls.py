@@ -14,6 +14,7 @@ urlpatterns = [
 	path('login/', views.login_view, name='login'),
 	path('logout/', views.logout_view, name='logout'),
     path('like/<int:post_id>/', views.like, name='like'),
+    path('comment/<int:post_id>/',views.comment, name='comment')
 ]
 
 from django.conf import settings

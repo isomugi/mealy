@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login as login, authenticate, logout
 
-from .models import Post, PostModel, Like
-from .forms import UserCreateForm, UserUpdateForm, LoginForm
+from .models import Post, PostModel, Like, Comment
+from .forms import UserCreateForm, UserUpdateForm, LoginForm, CommentForm
 
 def index(request):
 	latest_post_list = Post.objects.order_by('-pub_date')[:5]
@@ -14,7 +14,8 @@ def index(request):
 
 def detail(request, post_id):
 	post = get_object_or_404(Post, pk = post_id)
-	context = { 'post': post }
+	form = CommentForm()
+	context = { 'post': post ,'form': form}
 	return render(request, 'project/detail.html', context)
 
 def create(request):
@@ -35,6 +36,21 @@ def post(request):
 	else:
 		form = PostModel()
 	return render(request, 'project/create.html', { 'form': form })
+
+def comment(request,post_id):
+	post = get_object_or_404(Post, pk = post_id)
+	if not request.user.is_authenticated:
+		return redirect('project:login')
+	elif request.method == 'POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.post = post
+			comment.author = request.user
+			comment.save()
+			return redirect('project:detail', post_id = post_id )
+
+	return render(request, 'project/detail.html', { 'form': form ,'post': post})
 
 def like(request, post_id):
 	if not request.user.is_authenticated:

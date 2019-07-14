@@ -16,6 +16,10 @@ h1 {
 	width: 400px !important;
 }
 
+.scroll_comment {
+ height: 150px;
+ overflow: auto;
+}
 .post-image {
 	width : 400px;
 	height: 400px;
