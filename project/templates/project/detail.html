@@ -1,17 +1,43 @@
 {% extends 'project/base.html' %}
 {% block contents %}
 
-<h1>{{ post.title }}</h1>
-<div class="">tatsuki
+<a href="{% url 'project:index' %}">
+	<button type="button" class="btn btn-outline-success">
+		戻る
+	</button>
+</a>
+
+
+<div class="shadow p-3 mb-5 bg-white rounded mn">
+	<div class="left">
+		<h1 >{{ post.title }}</h1>
+		<div class="" >{{ user.username }}</div>
+	</div>
+	<div class="flex">
+		<div class="center">
+			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+		</div>
+
+		<div class="right">
+			<div class="" >
+				{{ post.text }}
+			</div>
+			<div type="scroll" class="comment">
+				<!--  -->
+			</div>
+		</div>
+	</div>
+  <a href="{% url 'project:like' post.id %}">
+   <button class="reaction_button" type="button" name="button">
+		 いいね
+	 </button>
+	</a>
+<div class="">{{ post.like_num }}
 
 </div>
-<div class="">
-	{{ post.text }}
 </div>
-<img src="{{ post.photo.url }}" alt="[Image]" class="post-image">
-
 
 <br><br>
-<a href="{% url 'project:index' %}">戻る</a>
+
 
 {% endblock contents %}

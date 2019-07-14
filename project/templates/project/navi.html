@@ -1,16 +1,24 @@
 {% load static %}
-<div class="background-white sticky navi-top center-padding">
+<div class="bg-white sticky navi-top center-padding">
 	<div class="flex justify-space-between align-center py-3">
 		<div>
 			<a href="{% url 'project:index' %}">
-				<img src="{% static 'project/images/present.png' %}" alt="[Logo]" height="30">
+				<img src="{% static 'project/images/Mealy_logo.png' %}" alt="[Logo]" height="30">
 			</a>
-			<span class="px-3">HB</span>
 		</div>
 		<div class="">
+			{% if user.is_authenticated %}
 			<a href="{% url 'project:mypage' %}">
 				<i class="far fa-user fa-2x"></i>
 			</a>
+			{% else %}
+			<a href="{% url 'project:login' %}">
+				ログイン
+			</a>
+			<a href="{% url 'project:register' %}" class="ml-4">
+				登録
+			</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

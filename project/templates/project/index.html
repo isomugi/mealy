@@ -3,9 +3,13 @@
 
 {% if latest_post_list %}
 <div class="pt-5">
-    {% for post in latest_post_list %}
+
+	{% for post in latest_post_list %}
+	<div class="mb-2">
 		{% include 'project/post.html' %}
+	</div>
     {% endfor %}
+
 </div>
 {% else %}
     <p>No posts are available.</p>

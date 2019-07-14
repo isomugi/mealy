@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
@@ -9,6 +9,11 @@ urlpatterns = [
 	path('create/', views.create, name='create'),
 	path('post/', views.post, name='post'),
 	path('mypage/', views.mypage, name='mypage'),
+	path('edit/', views.edit, name='edit'),
+	path('register/', views.register, name='register'),
+	path('login/', views.login_view, name='login'),
+	path('logout/', views.logout_view, name='logout'),
+    path('like/<int:post_id>/', views.like, name='like'),
 ]
 
 from django.conf import settings

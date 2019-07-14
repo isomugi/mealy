@@ -3,20 +3,21 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+		<meta name="mobile-web-app-capable" content="yes">
 		<link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %}" type="text/css">
 		<link rel="stylesheet" type="text/css" href="{% static 'project/css/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'project/css/main.css' %}">
 		<script src="https://kit.fontawesome.com/d5c75f4bc7.js"></script>
 		{% block styles %}{% endblock %}
-		<link rel="icon" href="{% static 'project/images/present.png' %}">
-		<title>HB</title>
+		<link rel="icon" href="{% static 'project/images/Mealy_icon2.png' %}">
+		<title>Mealy</title>
 	</head>
 	<body class="background-grey">
 		<header>
 			{% include 'project/navi.html' %}
 		</header>
-		<div class="mx-4 center-padding">
+		<div class="center-padding">
 			{% block contents %}{% endblock %}
 		</div>
 		<footer>
@@ -24,6 +25,12 @@
 		</footer>
 		<script type="text/javascript" src="{% static 'project/js/jquery.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'project/js/bootstrap.min.js' %}"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<script type="text/javascript">
+			axios.defaults.xsrfCookieName = 'csrftoken'
+			axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+		</script>
 		{% block scripts %}{% endblock %}
 	</body>
 </html>

@@ -1,27 +1,104 @@
 {% extends 'project/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<style media="screen">
+	.upload-btn {
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		outline: none !important;
+	}
+	#uploaded {
+		width: 200px;
+		height: 200px;
+		object-fit: cover;
+		border: solid #fff 4px;
+		box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
+		background-color: #fff;
+		border-radius: 5px;
+	}
+	.name-input {
+
+	}
+	.text-input {
+		width: 100%;
+	}
+	.send-btn {
+		background-color: #fff;
+		border: solid 1px rgba(0, 0, 0, 0.5);
+		border-radius: 50%;
+		width: 70px;
+		height: 70px;
+	}
+</style>
+{% endblock styles %}
+
 {% block contents %}
+<div class="fa-1_5x sp-lg-space bold mt-4">
+	今日のご飯を投稿する
+</div>
 
-<h1>新規投稿作成</h1>
-
-{% if form and form.errors %}<div><strong>{{ form.errors }}</strong></div>{% endif %}
+{% if form and form.errors %}
+<div class="red">
+	{% for field, error in form.errors.items %}
+	<div class="">
+		<strong>{{ field }}</strong>
+		{{ error }}
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
 
 <form action="{% url 'project:post' %}" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	<div class="">
-		<input type="text" name="title" placeholder="タイトル">
-	</div>
-	<div class="">
-		<textarea name="text" rows="8" cols="80" placeholder="テキスト（任意）"></textarea>
-	</div>
-	<div class="">
-		<label for="photo">
+	<div class="text-center">
+		<img src="{% static 'project/images/Mealy_icon1.png' %}" alt="[Uploaded]" id="uploaded">
+		<div class="fa-1_2x sp-sm-space mt-2">
 			写真をアップロードしてください。
-		</label>
-		<input type="file" name="photo" id="photo">
+		</div>
+		<div class="">
+			<button type="button" name="button" class="upload-btn" onclick="photo.click()">
+				<i class="fas fa-plus"></i>
+			</button>
+			<input type="file" name="photo" id="photo" onchange="setImg(event)" style="display: none;">
+		</div>
 	</div>
-	<div class="">
-		<button type="submit" name="button">送信</button>
+	<div class="text-center">
+		<div class="mt-4">
+			<input type="text" name="title" placeholder="料理名" class="input-name">
+		</div>
+		<div class="mt-3">
+			<textarea name="text" rows="8" cols="80" placeholder="どんな味がしましたか？" class="text-input"></textarea>
+		</div>
+	</div>
+
+	<div class="text-center mt-3 pb-5">
+		<button type="submit" name="button" class="send-btn">
+			<i class="fas fa-share fa-2x"></i>
+		</button>
 	</div>
 </form>
-
 {% endblock contents %}
+
+{% block scripts %}
+<script type="text/javascript">
+	const setImg = function(e) {
+		if (e.target.files[0].type.match("image.*")) {
+			var reader = new FileReader();
+			reader.onload = event => {
+				$('#uploaded').attr('src', event.target.result)
+				console.log("('#uploaded')")
+			};
+			reader.readAsDataURL(e.target.files[0]);
+
+
+		} else {
+			$(this).val("");
+			alert("使用できる拡張子はjpg, png, pdfのみです。");
+		}
+		console.log('Image set')
+	}
+</script>
+{% endblock scripts %}

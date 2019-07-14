@@ -1,0 +1,28 @@
+{% extends "project/base.html" %}
+
+{% block contents %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="POST" action="{% url 'project:login' %}">
+	{% csrf_token %}
+	<label>ユーザーID</label>
+	{{ form.username }}
+	{{ form.errors }}
+	<label>パスワード</label>
+	{{ form.password }}
+	{{ form.password.errors }}
+	<button type = "submit">ログイン</button>
+</form>
+{% endblock %}
