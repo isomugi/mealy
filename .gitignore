@@ -105,3 +105,6 @@ venv.bak/
 
 media/uploads/*
 mealy-ca65d65bdd56.json
+
+# node_modules
+node_modules
