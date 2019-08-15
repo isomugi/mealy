@@ -2,7 +2,7 @@
 {% block styles %}
 <style media="screen">
 	.center-scroll {
-		height: calc(100vh - 160px);
+		height: calc( 100vh - 180px);
 		overflow: scroll;
 		-webkit-overflow-scrolling: touch;
 	}
@@ -14,7 +14,7 @@
 {% if latest_post_list %}
 <div class="pt-5">
 	<div class="row">
-		<div class="col-md-8 col-sm-12 center-scroll">
+		<div class="col-md-7 col-sm-12 center-scroll">
 			{% for post in latest_post_list %}
 			<div class="mb-2">
 				{% include 'project/post.html' %}
@@ -22,16 +22,19 @@
 			{% endfor %}
 		</div>
 
-		<div class="col-md-4 col-sm-12">
+		<div class="col-md-5 col-sm-12">
 			{% include 'project/index/calendar.html' %}
 		</div>
 	</div>
 </div>
+
+
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
 
-<div class="mt-4">
+<div class="m-0">
 	<a href="{% url 'project:create' %}" class="red mt-4">新規投稿</a>
 </div>
+
 {% endblock contents %}
