@@ -25,7 +25,7 @@ SECRET_KEY = '+_gs@m@d3eji%7)ys@ok2xmiz0y4_y^%mqmd4q4tl&*x!h^!u)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv('GAE_INSTANCE'):
-	DEBUG = False
+	DEBUG = True
 else:
 	DEBUG = True
 
@@ -85,7 +85,6 @@ DATABASES = {
         'NAME': 'birthpro', #　作成したデータベース名
         'USER': 'birth', # ログインユーザー名
 		'PASSWORD': '',
-		# 'PORT': '5432', # google cloud sql 接続時
 		'PORT': '3306', # 通常時
     }
 }
@@ -135,11 +134,13 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if os.getenv('GAE_INSTANCE'):
-	MEDIA_URL = 'https://storage.googleapis.com/mealy/media/'
-	# GS_CREDENTIALS = service_account.Credentials.from_service_account_file('/mealy-ca65d65bdd56.json')←Nginxの502エラー
-	# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'←resource not foundになる
-	# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-	# GS_BUCKET_NAME = 'mealy/media'
-	# GS_PROJECT_ID = 'mealy-245003'
+	MEDIA_URL = 'https://storage.cloud.google.com/mealy-media/'
+	DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+	GS_BUCKET_NAME = 'mealy-media'
+	GS_PROJECT_ID = 'mealy-245003'
+	GS_AUTO_CREATE_BUCKET=True
+	GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+	"/srv/mealy-ca65d65bdd56.json"
+	)
 else:
 	MEDIA_URL = '/media/'
