@@ -2,39 +2,40 @@
 {% block contents %}
 
 <a href="{% url 'project:index' %}">
-	<button type="button" class="btn btn-outline-success">
-		戻る
-	</button>
+	<i class="fas fa-angle-left fa-3x mt-3"></i>
 </a>
 
 
-<div class="shadow p-3 mb-5 bg-white rounded mn">
-	<div class="left">
-		<h1 >{{ post.title }}</h1>
-		<div class="" >{{ user.username }}</div>
-	</div>
-	<div class="flex">
-		<div class="center">
-			<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+<div class="container shadow-sm py-3 px-5 mb-5 bg-white rounded mn">
+	<div class="row">
+		<h1 class="col-md-12 col-sm-12">{{ post.title }}</h1>
+
+
+		<div class="col-md-6 col-sm-12">
+
+			<div class="fa-1_2x">{{ user.username }}</div>
+			<div class="">
+				<img src="{{ post.photo.url }}" alt="[Image]" class="post-image" align="center">
+			</div>
+			<a href="{% url 'project:like' post.id %}">
+				<button class="reaction_button" type="button" name="button">
+					いいね
+				</button>
+			</a>
+			<span>
+				{{ post.like_num }}
+			</span>
 		</div>
 
-		<div class="right">
-			<div class="" >
+		<div class="col-md-6 col-sm-12" style="width: 100%;">
+			<div class="fa-1_2x sp-sm-space" >
 				{{ post.text }}
 			</div>
-			<div type="scroll" class="comment">
-				<!--  -->
-			</div>
+			{% include 'project/comment.html' %}
 		</div>
-	</div>
-  <a href="{% url 'project:like' post.id %}">
-   <button class="reaction_button" type="button" name="button">
-		 いいね
-	 </button>
-	</a>
-<div class="">{{ post.like_num }}
 
-</div>
+
+	</div>
 </div>
 
 <br><br>

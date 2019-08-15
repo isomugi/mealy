@@ -31,6 +31,14 @@ python manage.py runserver
 
 Open http://localhost:8000 to see the app working!
 
+
+## Migrations on google app engine
+```
+mysql.server stop
+~/cloud_sql_proxy -instances=mealy-245003:asia-east1:mealy-instance=tcp:3306 &
+python manage.py migrate
+```
+
 ## used libraries
 - CSS, JS: https://getbootstrap.com/, https://api.jquery.com/
 - Fonts: https://fontawesome.com/icons/
