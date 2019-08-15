@@ -1,0 +1,29 @@
+{% block styles %}
+<style media="screen">
+  .comment-input {
+    height: 100px;
+    width: 100%;
+  }
+</style>
+{% endblock styles %}
+
+<div>
+  <!-- <h3>コメント</h3> -->
+  <div class="fa-1_5x">
+    コメント
+  </div>
+  <form method="post" action="{% url 'project:comment' post.id %}">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    <textarea name="text" class="comment-input"></textarea>
+    <input type="submit">
+  </form>
+  <hr>
+  <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class='scroll_comment'>
+    {% for comment in post.comment_set.all %}
+    author: {{ comment.author }}<br>
+    {{ comment.text }}<br>
+    <hr>
+    {% endfor %}
+  </div>
+</div>
