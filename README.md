@@ -1,5 +1,6 @@
 # birth-pro
-Birthday project
+We've created this project as a present project for our parents.
+Main features: you can share pictures of your daily meals, which will displayed like a diary. Show it to your family members and help your mom deciding dinner menus!
 
 ## Requirements
 Remember to call these commands when you first initialize this app.
